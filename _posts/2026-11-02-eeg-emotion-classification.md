@@ -2,6 +2,7 @@
 layout: post
 title: "EEG-Based Emotion Classification Using Machine Learning and the GAMEEMO Dataset"
 date: 2026-11-02
+permalink: /2026/11/02/eeg-emotion-classification/
 ---
 
 # EEG-Based Emotion Classification Using Machine Learning and the GAMEEMO Dataset
@@ -106,20 +107,16 @@ These observations helped me understand the variability of EEG data and provided
 One thing I learned from this stage is that looking at the data visually can reveal things that are not immediately obvious from a table of numbers.
 
 It also helped me become more familiar with the dataset before moving on to the more technical parts of the project.
-
 ![Unusual EEG spectral peaks]({{ '/assets/images/psd-abnormal.png' | relative_url }})
 
 *Figure 1. EEG Power Spectral Density showing unusual spectral peaks.*
-**Figures to include:**
-- An example of an EEG signal from a selected participant.
-- A comparison of signals with noticeably different patterns.
-- 
+
 ![Relatively normal EEG spectral pattern]({{ '/assets/images/psd-normal.png' | relative_url }})
 
 *Figure 2. EEG Power Spectral Density showing relatively consistent spectral patterns.*
-    Figure 2. EEG power spectral density showing relatively consistent spectral patterns.
-  </p>
-</div>
+
+- An example of an EEG signal from a selected participant.
+- A comparison of signals with noticeably different patterns.
 - EEG visualizations across multiple channels.
 
 ## 6. Data Preprocessing
