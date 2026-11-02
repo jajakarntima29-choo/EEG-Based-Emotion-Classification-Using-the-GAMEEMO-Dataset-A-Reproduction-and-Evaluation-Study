@@ -1,5 +1,6 @@
 ---
 layout: post
+title: ""
 date: 2026-11-02
 permalink: /2026/11/02/eeg-emotion-classification/
 ---
