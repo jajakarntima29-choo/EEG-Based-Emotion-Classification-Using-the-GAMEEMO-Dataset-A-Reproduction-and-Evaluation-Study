@@ -1,6 +1,5 @@
 ---
 layout: post
-title: "EEG-Based Emotion Classification Using Machine Learning and the GAMEEMO Dataset"
 date: 2026-11-02
 permalink: /2026/11/02/eeg-emotion-classification/
 ---
