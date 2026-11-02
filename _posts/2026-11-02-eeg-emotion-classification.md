@@ -25,7 +25,6 @@ pre{background:var(--soft-blue);border:1px solid var(--sky-blue);border-radius:1
 hr{border:none;border-top:2px solid var(--soft-pink);}
 </style>
 
-# EEG-Based Emotion Classification Using Machine Learning and the GAMEEMO Dataset
 
 <img src="{{ '/assets/images/cover-eeg.png.png' | relative_url }}"
      alt="EEG-Based Emotion Classification Project Cover"
