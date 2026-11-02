@@ -5,7 +5,9 @@ date: 2026-11-02
 ---
 
 # EEG-Based Emotion Classification Using Machine Learning and the GAMEEMO Dataset
-<![EEG-Based Emotion Classification Project Cover]({{ '/images/cover-eeg.png.png' | relative_url }})
+<img src="{{ '/assets/images/cover-eeg.png.png' | relative_url }}"
+     alt="EEG-Based Emotion Classification Project Cover"
+     style="width:100%; height:auto; border-radius:12px;">
 ## 1. Introduction
 
 Have you ever wondered whether we can recognize someone's emotions without actually asking them how they feel?
@@ -105,14 +107,14 @@ One thing I learned from this stage is that looking at the data visually can rev
 
 It also helped me become more familiar with the dataset before moving on to the more technical parts of the project.
 
-![PSD showing unusual spectral peaks]({{ '/images/psd-abnormal.png' | relative_url }})
+![Unusual EEG spectral peaks]({{ '/assets/images/psd-abnormal.png' | relative_url }})
 
 *Figure 1. EEG Power Spectral Density showing unusual spectral peaks.*
 **Figures to include:**
 - An example of an EEG signal from a selected participant.
 - A comparison of signals with noticeably different patterns.
 - 
-![PSD showing relatively consistent patterns]({{ '/images/psd-normal.png.png' | relative_url }})
+![Relatively normal EEG spectral pattern]({{ '/assets/images/psd-normal.png' | relative_url }})
 
 *Figure 2. EEG Power Spectral Density showing relatively consistent spectral patterns.*
     Figure 2. EEG power spectral density showing relatively consistent spectral patterns.
@@ -292,7 +294,7 @@ This prevents information from the test set from being used when calculating the
 
 After preparing the data and selecting the models, I needed a way to evaluate their performance.
 
-![Original GAMEEMO paper results]({{ '/images/paper-results.png.png' | relative_url }})
+![Original GAMEEMO paper results]({{ '/assets/images/paper-results.png' | relative_url }})
 
 *Figure 3. Classification accuracy reported in the original GAMEEMO study.*
 
@@ -406,7 +408,7 @@ The results were quite interesting because the performance changed depending on 
 The following values are approximate readings from the result graphs reviewed earlier. They should be replaced with the exact output values before publication.
 
 ### 10.1 Four-Class Classification
-![Our 3-Fold Cross-Validation Results]({{ '/images/model-results-3fold.png.png' | relative_url }})
+![Our 3-Fold Cross-Validation Results]({{ '/assets/images/model-results-3fold.png' | relative_url }})
 
 *Figure 4. Model evaluation results using 3-fold cross-validation.*
 
