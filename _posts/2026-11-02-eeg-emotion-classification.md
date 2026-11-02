@@ -416,7 +416,6 @@ After completing the experiments, I compared the performance of SVM, kNN, and ML
 
 The results were quite interesting because the performance changed depending on how the data was divided.
 
-The following values are approximate readings from the result graphs reviewed earlier. They should be replaced with the exact output values before publication.
 
 ### 10.1 Reference: Results Reported in the Original Study
 
