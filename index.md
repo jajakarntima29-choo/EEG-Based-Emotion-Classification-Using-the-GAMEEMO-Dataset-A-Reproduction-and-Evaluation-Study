@@ -4,7 +4,6 @@ title: EEG Emotion Classification
 ---
 
 # EEG-Based Emotion Classification
-## Using Machine Learning and the GAMEEMO Dataset
 
 Exploring the possibility of recognizing human emotions
 through EEG signals using machine learning techniques.
