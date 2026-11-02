@@ -5,10 +5,33 @@ date: 2026-11-02
 permalink: /2026/11/02/eeg-emotion-classification/
 ---
 
+<style>
+:root{--soft-blue:#DDEFFD;--sky-blue:#B8DDF5;--soft-pink:#FADCEA;--navy:#1F3A56;--teal:#1F7A9A;--muted:#5A6B82;--bg:#F6FAFE;}
+body{background:var(--bg);color:var(--navy);line-height:1.75;}
+h1,h2,h3,h4{color:var(--teal);line-height:1.3;}
+h2{border-bottom:3px solid var(--soft-pink);padding-bottom:.25em;margin-top:2.2em;}
+h3{border-left:5px solid var(--sky-blue);padding-left:.6em;margin-top:1.8em;}
+a{color:var(--teal);}
+a:hover{background:var(--soft-pink);}
+strong{background:linear-gradient(transparent 62%,var(--soft-pink) 62%);}
+img{max-width:100%;height:auto;border-radius:12px;display:block;margin:1.2em auto;box-shadow:0 2px 12px rgba(31,58,86,.10);}
+p>em:only-child{display:block;text-align:center;color:var(--muted);font-size:.92em;margin-top:-.4em;}
+table{border-collapse:collapse;width:100%;margin:1.2em 0;border-radius:10px;overflow:hidden;}
+th{background:var(--soft-blue);color:var(--navy);}
+th,td{border:1px solid var(--sky-blue);padding:8px 12px;}
+tr:nth-child(even) td{background:var(--bg);}
+blockquote{border-left:4px solid var(--soft-pink);background:var(--soft-blue);margin:1.2em 0;padding:.6em 1em;border-radius:0 10px 10px 0;}
+code{background:var(--soft-blue);padding:2px 6px;border-radius:6px;}
+pre{background:var(--soft-blue);border:1px solid var(--sky-blue);border-radius:10px;padding:12px;overflow-x:auto;}
+hr{border:none;border-top:2px solid var(--soft-pink);}
+</style>
+
 # EEG-Based Emotion Classification Using Machine Learning and the GAMEEMO Dataset
+
 <img src="{{ '/assets/images/cover-eeg.png.png' | relative_url }}"
      alt="EEG-Based Emotion Classification Project Cover"
      style="width:100%; height:auto; border-radius:12px;">
+
 ## 1. Introduction
 
 Have you ever wondered whether we can recognize someone's emotions without actually asking them how they feel?
@@ -101,12 +124,12 @@ I used EDA to visualize EEG signals from different channels and participants. I 
 
 During this process, I noticed that EEG signals were not identical across participants. Some recordings showed more noticeable peaks in certain frequency ranges, while others had different signal patterns.
 
-
 These observations helped me understand the variability of EEG data and provided useful information for the participant selection process.
 
 One thing I learned from this stage is that looking at the data visually can reveal things that are not immediately obvious from a table of numbers.
 
 It also helped me become more familiar with the dataset before moving on to the more technical parts of the project.
+
 ![Unusual EEG spectral peaks]({{ '/assets/images/psd-abnormal.png' | relative_url }})
 
 *Figure 1. EEG Power Spectral Density showing unusual spectral peaks.*
@@ -114,10 +137,6 @@ It also helped me become more familiar with the dataset before moving on to the 
 ![Relatively normal EEG spectral pattern]({{ '/assets/images/psd-normal.png' | relative_url }})
 
 *Figure 2. EEG Power Spectral Density showing relatively consistent spectral patterns.*
-
-- An example of an EEG signal from a selected participant.
-- A comparison of signals with noticeably different patterns.
-- EEG visualizations across multiple channels.
 
 ## 6. Data Preprocessing
 
@@ -149,15 +168,20 @@ This was one of the most interesting parts of the project because raw EEG signal
 
 I needed to transform each signal window into numerical features that could describe its characteristics.
 
-Rather than relying on only one type of feature, I combined several approaches to capture different aspects of the EEG signals.
+Following the original GAMEEMO study, I extracted **10 features** from each EEG window. Rather than relying on only one type of measurement, these features capture different aspects of the signal, and they fall into two groups:
+
+- **Time-domain and complexity features**, computed directly from the raw signal of each channel: Hjorth Parameters, Zero-crossings, Detrended Fluctuation Analysis (DFA), Sample Entropy (SampEn), and Multiscale Entropy (MSE).
+- **Wavelet-based features**, computed from the Discrete Wavelet Transform (DWT) coefficients: Standard Deviation, Variance, Average Wavelet Energy, Shannon Entropy, and Logarithmic Energy Entropy.
 
 Each of the 14 channels was processed separately, and the extracted features were later combined into one feature vector.
 
-### 7.1 Hjorth Parameters
+### 7.1 Time-Domain and Complexity Features
 
-I started with Hjorth parameters, which are commonly used to describe EEG signals.
+These five features are calculated directly from the raw signal of each channel in a 4-second window.
 
-There are three parameters:
+**1) Hjorth Parameters**
+
+Hjorth parameters are commonly used to describe EEG signals. There are three parameters:
 
 - **Activity:** Describes the variance or overall power of the signal.
 - **Mobility:** Represents the rate of change of the signal and is related to its frequency characteristics.
@@ -165,77 +189,71 @@ There are three parameters:
 
 Together, these three parameters provide a compact way to describe the behavior of an EEG signal.
 
-### 7.2 Zero Crossing
+**2) Zero-Crossings**
 
-Next, I used Zero Crossing, which counts how many times a signal crosses the zero-amplitude level.
+Zero-crossings counts how many times a signal crosses the zero-amplitude level. Although it is a simple measurement, it provides additional information about how frequently the signal changes around zero.
 
-Although it is a simple measurement, it provides additional information about how frequently the signal changes around zero.
-
-### 7.3 Detrended Fluctuation Analysis (DFA)
-
-I also included Detrended Fluctuation Analysis, or DFA.
+**3) Detrended Fluctuation Analysis (DFA)**
 
 DFA is used to investigate long-range correlations and scaling behavior in time-series data. In other words, it helps describe patterns and relationships in a signal that may not be captured by basic statistical features.
 
-### 7.4 Sample Entropy
-
-Another feature I used was Sample Entropy.
+**4) Sample Entropy (SampEn)**
 
 Sample Entropy measures the irregularity or complexity of a time series. It provides information about how predictable or repetitive the signal patterns are.
 
 I included this feature because EEG signals can have complex patterns that are not always well represented by simple measurements such as mean or variance.
 
-### 7.5 Multiscale Entropy (MSE)
-
-To explore signal complexity from another perspective, I also calculated Multiscale Entropy (MSE).
+**5) Multiscale Entropy (MSE)**
 
 Unlike Sample Entropy, which evaluates complexity at a particular scale, MSE examines signal complexity across different time scales.
 
-In this project, MSE was calculated up to scale 3, giving three additional features for each channel.
+In this project, MSE was calculated up to scale 3, giving three values for each channel.
 
-### 7.6 Wavelet-Based Features: DWT db2
+### 7.2 Wavelet-Based Features (DWT db2)
 
-Finally, I used Discrete Wavelet Transform (DWT) with the Daubechies 2 wavelet, commonly called db2.
+The other five features are based on the Discrete Wavelet Transform (DWT).
 
 DWT is a signal processing technique that decomposes a signal into different frequency components at multiple levels. This is particularly useful for EEG because brain signals are non-stationary, meaning their characteristics can change over time.
 
-I applied DWT using db2 with a decomposition level of 4.
+I applied DWT with the Daubechies 2 wavelet (db2) at a decomposition level of 4. This produced five sets of coefficients, covering every sub-band from D1 to D4 and A4:
 
-This produced five sets of wavelet coefficients:
+- Approximation coefficients at level 4 (A4)
+- Detail coefficients at level 4 (D4)
+- Detail coefficients at level 3 (D3)
+- Detail coefficients at level 2 (D2)
+- Detail coefficients at level 1 (D1)
 
-- Approximation coefficients at level 4 (cA4)
-- Detail coefficients at level 4 (cD4)
-- Detail coefficients at level 3 (cD3)
-- Detail coefficients at level 2 (cD2)
-- Detail coefficients at level 1 (cD1)
+For each of these five sub-bands, I calculated the following five features:
 
-For each set of coefficients, I calculated five features:
-
-| Feature | What it describes |
+| Wavelet feature | What it describes |
 |---|---|
 | Standard Deviation | How widely coefficient values are spread. |
 | Variance | How much coefficient values vary. |
-| Energy | The average squared magnitude of the coefficients. |
+| Average Wavelet Energy | The average squared magnitude of the coefficients. |
 | Shannon Entropy | The uncertainty or distribution of coefficient values. |
-| Log Energy Entropy | Information related to the energy distribution of the coefficients. |
+| Logarithmic Energy Entropy | Information related to the energy distribution of the coefficients. |
 
-By combining these wavelet-based features with the other signal features, I could represent EEG signals from several different perspectives.
+This gives 5 features × 5 sub-bands = 25 wavelet-based values per channel.
 
-### 7.7 Putting All Features Together
+### 7.3 Putting All Features Together
 
 After extracting the features from each channel, I combined them into one feature vector for each EEG window.
 
-The number of features was calculated as follows:
+The 10 features and the number of values each one contributes per channel are summarized below:
 
-| Feature group | Features per channel |
-|---|---:|
-| Hjorth Parameters | 3 |
-| Zero Crossing | 1 |
-| DFA | 1 |
-| Sample Entropy | 1 |
-| Multiscale Entropy | 3 |
-| Wavelet-based features | 25 |
-| **Total** | **34** |
+| # | Feature | Group | Values per channel |
+|---|---|---|---:|
+| 1 | Hjorth Parameters (Activity, Mobility, Complexity) | Time-domain and complexity | 3 |
+| 2 | Zero-crossings | Time-domain and complexity | 1 |
+| 3 | Detrended Fluctuation Analysis (DFA) | Time-domain and complexity | 1 |
+| 4 | Sample Entropy (SampEn) | Time-domain and complexity | 1 |
+| 5 | Multiscale Entropy (MSE, scales 1–3) | Time-domain and complexity | 3 |
+| 6 | Standard Deviation | Wavelet-based (D1–D4, A4) | 5 |
+| 7 | Variance | Wavelet-based (D1–D4, A4) | 5 |
+| 8 | Average Wavelet Energy | Wavelet-based (D1–D4, A4) | 5 |
+| 9 | Shannon Entropy | Wavelet-based (D1–D4, A4) | 5 |
+| 10 | Logarithmic Energy Entropy | Wavelet-based (D1–D4, A4) | 5 |
+| | **Total** | | **34** |
 
 Since the dataset used 14 EEG channels:
 
@@ -291,11 +309,7 @@ This prevents information from the test set from being used when calculating the
 
 After preparing the data and selecting the models, I needed a way to evaluate their performance.
 
-![Original GAMEEMO paper results]({{ '/assets/images/paper-results.png' | relative_url }})
-
-*Figure 3. Classification accuracy reported in the original GAMEEMO study.*
-
-I designed the experiments around two classification tasks and two evaluation protocols.
+I designed the experiments around two classification tasks and two evaluation protocols. (The results reported in the original GAMEEMO study are shown in Section 10.1 for reference.)
 
 ### 9.1 Classification Tasks
 
@@ -404,7 +418,18 @@ The results were quite interesting because the performance changed depending on 
 
 The following values are approximate readings from the result graphs reviewed earlier. They should be replaced with the exact output values before publication.
 
-### 10.1 Four-Class Classification
+### 10.1 Reference: Results Reported in the Original Study
+
+Before looking at my own numbers, it helps to see what the original GAMEEMO study reported. I used it as a reference point for my reproduction.
+
+![Original GAMEEMO paper results]({{ '/assets/images/paper-results.png' | relative_url }})
+
+*Figure 3. Classification accuracy reported in the original GAMEEMO study.*
+
+Keep in mind that the experimental settings are not identical. The original study used 10-fold cross-validation, while my experiments used 18 selected participants with 3-fold cross-validation. The comparison is therefore meant to give context rather than a one-to-one match.
+
+### 10.2 Four-Class Classification
+
 ![Our 3-Fold Cross-Validation Results]({{ '/assets/images/model-results-3fold.png' | relative_url }})
 
 *Figure 4. Model evaluation results using 3-fold cross-validation.*
@@ -423,7 +448,7 @@ All three models achieved Accuracy values of around 0.35–0.36, showing that cl
 
 This was an important finding because it showed that good performance on windows from the same participant pool does not necessarily mean that a model can generalize to new people.
 
-### 10.2 Binary Classification
+### 10.3 Binary Classification
 
 | Model | Window-wise Accuracy | Window-wise F1 | Subject-wise Accuracy | Subject-wise F1 |
 |---|---:|---:|---:|---:|
@@ -439,7 +464,13 @@ However, the subject-wise scores were still noticeably lower, with Accuracy valu
 
 This suggests that grouping the four emotional categories into two broader classes made the classification task easier, but it did not completely solve the problem of differences between participants.
 
-### 10.3 What Did I Learn From the Results?
+### 10.4 How Do My Results Compare With the Original Study?
+
+The window-wise protocol is the closest counterpart to a standard k-fold evaluation on pooled data, so it is the fairest point of comparison with the original study shown in Figure 3. Because windows from the same participant can appear in both training and testing sets, this protocol tends to give higher scores.
+
+The subject-wise protocol is a stricter test that goes beyond what a standard k-fold setup measures. The large gap between the two protocols is the main additional insight from this reproduction.
+
+### 10.5 What Did I Learn From the Results?
 
 Looking at the results, I found three main things worth discussing.
 
@@ -499,7 +530,7 @@ There is still a lot to explore, but these experiments gave me a clearer idea of
 
 Looking back, this project was a valuable opportunity to explore EEG signal processing and machine learning from beginning to end.
 
-I started with raw EEG recordings from the GAMEEMO dataset, explored the signals through EDA, prepared the data using 4-second segmentation, and extracted 476 features from each window using statistical, complexity-based, and wavelet-based methods.
+I started with raw EEG recordings from the GAMEEMO dataset, explored the signals through EDA, prepared the data using 4-second segmentation, and extracted 476 features from each window using the 10 time-domain, complexity-based, and wavelet-based features from the original study.
 
 I then compared three machine learning models: SVM, kNN, and MLPNN, using both four-class and binary classification tasks.
 
@@ -534,4 +565,3 @@ Thank you, Pung and Ong, for your patience, encouragement, and all the time you 
 ## References
 
 1. GAMEEMO dataset paper and original dataset documentation. **[https://www.sciencedirect.com/science/article/abs/pii/S1746809420301075]**
-
