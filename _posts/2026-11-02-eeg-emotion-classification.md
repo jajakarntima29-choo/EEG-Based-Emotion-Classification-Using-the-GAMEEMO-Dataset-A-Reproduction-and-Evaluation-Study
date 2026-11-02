@@ -30,9 +30,8 @@ hr{border:none;border-top:2px solid var(--soft-pink);}
 <img src="{{ '/assets/images/cover-eeg.png.png' | relative_url }}"
      alt="EEG-Based Emotion Classification Project Cover"
      style="width:100%; height:auto; border-radius:12px;">
-<p style="text-align:center; margin-top:12px; color:#E88BB5; font-size:16px; font-weight:600;">
-  Project by JJa Karntima Choojangwhang
-</p>
+
+<p align="center"><span style="color: #E88BB5;"><strong>Project by JJa Karntima Choojangwhang</strong></span></p>
 
 ## 1. Introduction
 
