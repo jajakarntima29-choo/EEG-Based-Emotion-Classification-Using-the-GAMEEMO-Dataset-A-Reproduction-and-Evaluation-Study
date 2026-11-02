@@ -5,12 +5,7 @@ date: 2026-11-02
 ---
 
 # EEG-Based Emotion Classification Using Machine Learning and the GAMEEMO Dataset
-<div class="cover-image">
-  <img
-    src="{{ '/assets/images/cover-eeg.png' | relative_url }}"
-    alt="EEG-Based Emotion Classification Project Cover"
-  >
-</div>
+<![EEG-Based Emotion Classification Project Cover]({{ '/images/cover-eeg.png.png' | relative_url }})
 ## 1. Introduction
 
 Have you ever wondered whether we can recognize someone's emotions without actually asking them how they feel?
@@ -110,18 +105,16 @@ One thing I learned from this stage is that looking at the data visually can rev
 
 It also helped me become more familiar with the dataset before moving on to the more technical parts of the project.
 
+![PSD showing unusual spectral peaks]({{ '/images/psd-abnormal.png' | relative_url }})
+
+*Figure 1. EEG Power Spectral Density showing unusual spectral peaks.*
 **Figures to include:**
 - An example of an EEG signal from a selected participant.
-<div class="figure">
-  <img src="{{ '/assets/images/psd-abnormal.png' | relative_url }}" alt="PSD with unusual peaks">
-  <p class="figure-caption">
-    Figure 1. EEG power spectral density showing unusual spectral peaks.
-  </p>
-</div>
 - A comparison of signals with noticeably different patterns.
-<div class="figure">
-  <img src="{{ '/assets/images/psd-normal.png' | relative_url }}" alt="PSD with relatively consistent patterns">
-  <p class="figure-caption">
+- 
+![PSD showing relatively consistent patterns]({{ '/images/psd-normal.png.png' | relative_url }})
+
+*Figure 2. EEG Power Spectral Density showing relatively consistent spectral patterns.*
     Figure 2. EEG power spectral density showing relatively consistent spectral patterns.
   </p>
 </div>
@@ -298,12 +291,10 @@ This prevents information from the test set from being used when calculating the
 ## 9. Experimental Design and Evaluation
 
 After preparing the data and selecting the models, I needed a way to evaluate their performance.
-<div class="figure">
-  <img src="{{ '/assets/images/paper-results.png' | relative_url }}" alt="Original GAMEEMO paper results">
-  <p class="figure-caption">
-    Figure 3. Classification accuracy reported in the original GAMEEMO study (Alakus et al., 2020).
-  </p>
-</div>
+
+![Original GAMEEMO paper results]({{ '/images/paper-results.png.png' | relative_url }})
+
+*Figure 3. Classification accuracy reported in the original GAMEEMO study.*
 
 I designed the experiments around two classification tasks and two evaluation protocols.
 
@@ -415,12 +406,9 @@ The results were quite interesting because the performance changed depending on 
 The following values are approximate readings from the result graphs reviewed earlier. They should be replaced with the exact output values before publication.
 
 ### 10.1 Four-Class Classification
-<div class="figure">
-  <img src="{{ '/assets/images/model-results-3fold.png' | relative_url }}" alt="Our 3-fold cross-validation results">
-  <p class="figure-caption">
-    Figure 4. Model evaluation results using 3-fold cross-validation.
-  </p>
-</div>
+![Our 3-Fold Cross-Validation Results]({{ '/images/model-results-3fold.png.png' | relative_url }})
+
+*Figure 4. Model evaluation results using 3-fold cross-validation.*
 
 | Model | Window-wise Accuracy | Window-wise F1 | Subject-wise Accuracy | Subject-wise F1 |
 |---|---:|---:|---:|---:|
