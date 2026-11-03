@@ -542,23 +542,22 @@ Although the current results are not yet sufficient for real-world or clinical a
 
 And honestly, beyond the technical knowledge, one of the most valuable parts of this experience was learning how to approach a problem, deal with unexpected results, and keep going even when things became confusing.
 
-## A Little Appreciation for Our TAs
 
-No project journey is complete without the people who helped make it possible.
+## A Little Appreciation for the People Behind This Journey
 
-I would like to give a special thank you to our TAs, **Pung and Ong**, for guiding and supporting me throughout this project.
+No project journey is complete without the people who make the experience meaningful.
 
-First of all, let's be honest: having handsome and kind TAs definitely makes learning a little more enjoyable! But jokes aside, what I really appreciate is how approachable and friendly they are.
+First, I would like to sincerely thank **TA Moss and TA Bonus from Group 8**, where I was a member before the mid-program. Thank you for your guidance, kindness, and for sharing your knowledge with us. Although I later moved to another group, what I learned from you both remains an important part of this journey.
 
-There were many moments when I had absolutely no background knowledge about a topic. Sometimes, I did not even know what questions I should ask. But instead of making me feel bad about not knowing something, they always tried their best to explain things in a way that I could understand.
+As the journey continued, I had the opportunity to learn from **TA Pung and TA Ong**, who supported me throughout this project.
 
-Even when the topic was difficult or I needed things to be explained more than once, they were patient and willing to help me work through it.
+Let's be honest: having handsome and kind TAs definitely makes learning a little more enjoyable! But jokes aside, what I appreciate most is how approachable and patient they are. There were many times when I had little to no background knowledge, or did not even know what questions to ask. Yet, they always tried their best to explain things in a way I could understand. They can be a little strict sometimes... but just a little!
 
-Of course, they do have another side too. They can be a little strict sometimes... but just a little! (I promise, only a little.)
+Most importantly, I would also like to thank **BrainCodeCamp** for providing this opportunity to learn, explore new things, and challenge myself beyond what I already knew.
 
-I think that balance is what makes them great TAs. They are friendly enough to make it comfortable to ask questions, but they also know when to push us to think harder and take our work seriously.
+To all the TAs and everyone behind this camp, thank you for your time, support, and encouragement. This experience has given me more than just technical knowledge; it has also shown me how much the people around us can make a difference.
 
-Thank you, Pung and Ong, for your patience, encouragement, and all the time you spent helping us. I genuinely appreciate everything you have done. This project would have been a lot harder without your guidance.
+**Thank you for being part of this journey and making it such a memorable experience!**
 
 **Thank you for being not only great TAs, but also people who made this learning experience much more enjoyable!**
 
