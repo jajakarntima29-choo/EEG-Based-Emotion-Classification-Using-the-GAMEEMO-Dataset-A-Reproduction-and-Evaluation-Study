@@ -27,7 +27,7 @@ hr{border:none;border-top:2px solid var(--soft-pink);}
 </style>
 
 
-<img src="{{ '/assets/images/cover-eeg.png.png' | relative_url }}"
+<img src="{{ '/assets/images/cover2.png' | relative_url }}"
      alt="EEG-Based Emotion Classification Project Cover"
      style="width:100%; height:auto; border-radius:12px;">
 
